@@ -2,12 +2,12 @@
 
 - name: Create a Firewall Rule
   google.cloud.gcp_compute_firewall:
-    name: "{{prefix_first}}{{prefix_second}}-{{vpc.name}}-{{fw_rule.name}}"
+    name: "{{general.prefix_first}}{{general.prefix_second}}-{{vpc.name}}-{{fw_rule.name}}"
     allowed:
     - ip_protocol: "{{fw_rule.protocol}}"
-      ports: ["{{fw_rule.port}}"]
-    target_tags: ["{{fw_rule.target_tags}}"]
-    source_tags: ["{{fw_rule.source_ranges}}"]
+      ports: "{{fw_rule.port}}"
+    target_tags: "{{fw_rule.target_tags}}"
+    source_ranges: "{{fw_rule.source_ranges}}"
     network: "{{ rg_network }}"
     project: "{{ project[0].projectID }}"
     auth_kind: "{{ project[0].authkind }}"

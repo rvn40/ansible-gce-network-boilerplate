@@ -6,18 +6,18 @@ general:
   region_default: "us-west1"
   wild_world_range: "0.0.0.0/0"
 project:
-  - projectID: "<<projectID>>" 
+  - projectID: "devops-project-253405" 
     authkind: "serviceaccount"
 serviceaccounts: 
   - name: "devops-ansible"
-    email: "devops-ansible@<<projectID>>.iam.gserviceaccount.com"
+    email: "devops-ansible@devops-project-253405.iam.gserviceaccount.com"
     json_directory: "files/serviceaccounts/"
-    json_name: "devops-project.json"
+    json_name: "devops-project-253405-4cf109d08c9e.json"
 users:
   ssh:
-    - username: "user1"
+    - username: "rivan_amarbank"
       key_directory: "files/ssh_keys/"
-      key_filename: "my_key.pem"
+      key_filename: "rivan_amar.pem"
 vpc:
   name: "vpc-01"
   routing_mode: "GLOBAL" # Some valid choices include: "REGIONAL", "GLOBAL"
@@ -28,11 +28,11 @@ subnets:
 firewall:
   - name: "allow-webports-public"
     protocol: tcp
-    port: "80,443"
-    source_ranges: "0.0.0.0/0"
+    port: ["80","443"]
+    source_ranges: ["0.0.0.0/0"]
     target_tags: "allow-webports-public"
   - name: "allow-ssh-public"
     protocol: tcp
-    port: "22"
-    source_ranges: "0.0.0.0/0"
+    port: ["22"]
+    source_ranges: ["0.0.0.0/0"]
     target_tags: "allow-ssh-public"
