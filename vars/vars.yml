@@ -1,0 +1,38 @@
+---
+
+general:
+  prefix_first: "rcloud"
+  prefix_second: "labs"
+  region_default: "us-west1"
+  wild_world_range: "0.0.0.0/0"
+project:
+  - projectID: "<<projectID>>" 
+    authkind: "serviceaccount"
+serviceaccounts: 
+  - name: "devops-ansible"
+    email: "devops-ansible@<<projectID>>.iam.gserviceaccount.com"
+    json_directory: "files/serviceaccounts/"
+    json_name: "devops-project.json"
+users:
+  ssh:
+    - username: "user1"
+      key_directory: "files/ssh_keys/"
+      key_filename: "my_key.pem"
+vpc:
+  name: "vpc-01"
+  routing_mode: "GLOBAL" # Some valid choices include: "REGIONAL", "GLOBAL"
+subnets:
+  - name: "subnet-01"
+    group: "sea2"
+    subnet_range: "172.25.0.0/22"
+firewall:
+  - name: "allow-webports-public"
+    protocol: tcp
+    port: "80,443"
+    source_ranges: "0.0.0.0/0"
+    target_tags: "allow-webports-public"
+  - name: "allow-ssh-public"
+    protocol: tcp
+    port: "22"
+    source_ranges: "0.0.0.0/0"
+    target_tags: "allow-ssh-public"
