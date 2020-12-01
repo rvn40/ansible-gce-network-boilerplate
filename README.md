@@ -24,3 +24,7 @@ It's also necessary to install all of these packages requirements using pip:
 Prepare all of neccesary files like serviceaccount, ssh keys, bash, ssl, etc. Recommended to place those files under directory called "files".
 
 # How to use
+
+```
+ansible-playbook build-vpc.yml
+```
